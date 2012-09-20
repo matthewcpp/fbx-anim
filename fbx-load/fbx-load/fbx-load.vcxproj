@@ -82,12 +82,14 @@
     <ClCompile Include="math\rQuaternion.cpp" />
     <ClCompile Include="math\rVector2.cpp" />
     <ClCompile Include="math\rVector3.cpp" />
+    <ClCompile Include="walk.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\rMathUtil.hpp" />
     <ClInclude Include="math\rQuaternion.hpp" />
     <ClInclude Include="math\rVector2.hpp" />
     <ClInclude Include="math\rVector3.hpp" />
+    <ClInclude Include="walk.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
