@@ -6,8 +6,10 @@
 #include <fbxsdk.h>
 
 void WalkScene(FbxScene* fbxScene, std::ostream& logStream);
-
 void WalkNode(FbxNode* node, size_t depth, std::ostream& logStream);
+
+void WalkAnimations(FbxScene* fbxScene, std::ostream& logStream);
+void WalkAnimation(FbxAnimStack* animStack, std::ostream& logStream);
 
 void Indent(size_t depth, std::ostream& logStream);
 
