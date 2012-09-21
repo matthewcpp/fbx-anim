@@ -53,7 +53,7 @@ void WalkAnimations(FbxNode* node, FbxScene* fbxScene, std::ostream& logStream){
 	logStream << "\n\n" << std::endl;
 }
 
-//each stack can have any number of layers, however we are only intereste din the base layer (0)
+//each stack can have any number of layers, however we are only interested in the base layer (0)
 
 void WalkAnimation(FbxNode* node, FbxAnimStack* animStack, std::ostream& logStream){
 	Indent(1,logStream);
@@ -77,9 +77,31 @@ void GetCurveData(const std::string& label, FbxAnimCurve* animCurve, std::ostrea
 		FbxTimeSpan interval;
 		animCurve->GetTimeInterval(interval);
 		logStream << label <<"\t(" <<animCurve->KeyGetCount() << " keys) - " << interval.GetDuration().GetSecondDouble() << " seconds\n";
+		GetKeyValues(animCurve, logStream);
 	}
 	else
 		logStream << label <<"\t(0 keys)\n";
+}
+
+void GetKeyValues(FbxAnimCurve* animCurve, std::ostream& logStream){
+	int keyCount = animCurve->KeyGetCount();
+
+	keyArray keys;
+	keyInfo key;
+
+	FbxTime time;
+	float val;
+
+	for (int i = 0; i < keyCount; i++){
+		time = animCurve->KeyGetTime(i);
+
+		key.time = (float)time.GetSecondDouble();
+		key.value = animCurve->KeyGetValue(i);
+
+		keys.push_back(key);
+	}
+
+	PrintKeys(keys, logStream);
 }
 
 void Indent(size_t depth, std::ostream& logStream){
@@ -105,4 +127,20 @@ bool NodeAttributeIsType(FbxNode* node, FbxNodeAttribute::EType type){
 		return false;
 
 	return attribute->GetAttributeType() == type;
+}
+
+void PrintKeys(keyArray& keys, std::ostream& logStream){
+	Indent(3, logStream);
+	logStream << "Time:";
+	for (size_t i = 0; i < keys.size(); i++)
+		logStream << '\t' << keys[i].time; 
+	
+	logStream << "\n";
+
+	Indent(3, logStream);
+	logStream << "Value:";
+	for (size_t i = 0; i < keys.size(); i++)
+		logStream << '\t' << keys[i].value;
+
+	logStream << std::endl;
 }
