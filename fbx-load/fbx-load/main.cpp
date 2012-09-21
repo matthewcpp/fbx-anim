@@ -17,7 +17,6 @@ int main (int argc, char** argv){
 	if (result){
 		std::cout << "Import succeeded!" << std::endl;
 		WalkScene(fbxScene, std::cout);
-		WalkAnimations(fbxScene, std::cout);
 	}
 	else{
 		std::cout << "Import failed!" << std::endl;
