@@ -78,6 +78,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="math\rAlignedBox3.cpp" />
     <ClCompile Include="math\rMathUtil.cpp" />
     <ClCompile Include="math\rQuaternion.cpp" />
     <ClCompile Include="math\rVector2.cpp" />
@@ -85,6 +86,7 @@
     <ClCompile Include="walk.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="math\rAlignedBox3.hpp" />
     <ClInclude Include="math\rMathUtil.hpp" />
     <ClInclude Include="math\rQuaternion.hpp" />
     <ClInclude Include="math\rVector2.hpp" />

@@ -33,6 +33,9 @@
     <ClCompile Include="walk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="math\rAlignedBox3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="math\rQuaternion.hpp">
@@ -48,6 +51,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="walk.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="math\rAlignedBox3.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

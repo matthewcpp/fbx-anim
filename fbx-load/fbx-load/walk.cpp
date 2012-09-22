@@ -24,8 +24,12 @@ void ProcessSkeletonNode(FbxScene* fbxScene, FbxNode* node){
 	std::string logname = LogNameForObject(bone);
 	std::ofstream log(logname.c_str());
 
+	FbxDouble3 pos = node->LclTranslation;
 	log << bone->GetName();
-	log << "\tparent bone: ";
+	log << "\tPosition:" << pos[0] <<' ' << pos[1] << ' '<< pos[2];
+	log << "\tLength:" << bone->LimbLength;
+	log << "\tSize: "<< bone->Size <<'\n';
+	log << "parent bone: ";
 
 	FbxNode* parent = node->GetParent();
 	if (parent && NodeAttributeIsType(parent, FbxNodeAttribute::eSkeleton))
@@ -67,7 +71,9 @@ void WalkAnimation(FbxNode* node, FbxAnimStack* animStack, std::ostream& logStre
 	GetCurveData("Rotate X", node->LclRotation.GetCurve(baseLayer, FBXSDK_CURVENODE_COMPONENT_X), logStream);
 	GetCurveData("Rotate Y", node->LclRotation.GetCurve(baseLayer, FBXSDK_CURVENODE_COMPONENT_Y), logStream);
 	GetCurveData("Rotate Z", node->LclRotation.GetCurve(baseLayer, FBXSDK_CURVENODE_COMPONENT_Z), logStream);
-
+	GetCurveData("Scale X", node->LclScaling.GetCurve(baseLayer, FBXSDK_CURVENODE_COMPONENT_X), logStream);
+	GetCurveData("Scale Y", node->LclScaling.GetCurve(baseLayer, FBXSDK_CURVENODE_COMPONENT_Y), logStream);
+	GetCurveData("Scale Z", node->LclScaling.GetCurve(baseLayer, FBXSDK_CURVENODE_COMPONENT_Z), logStream);
 }
 
 void GetCurveData(const std::string& label, FbxAnimCurve* animCurve, std::ostream& logStream){
@@ -131,7 +137,7 @@ bool NodeAttributeIsType(FbxNode* node, FbxNodeAttribute::EType type){
 
 void PrintKeys(keyArray& keys, std::ostream& logStream){
 	Indent(3, logStream);
-	logStream << "Time:";
+	logStream << "Time:\t";
 	for (size_t i = 0; i < keys.size(); i++)
 		logStream << '\t' << keys[i].time; 
 	
