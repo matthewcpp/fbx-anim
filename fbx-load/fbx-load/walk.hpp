@@ -20,6 +20,10 @@ typedef std::vector<keyInfo> keyArray;
 void WalkScene(FbxScene* fbxScene, std::ostream& logStream);
 void WalkNode(FbxScene* fbxScene, FbxNode* node, size_t depth, std::ostream& logStream);
 
+void WalkAssets(FbxScene* scene, std::ostream& logStream);
+void WalkMaterials(FbxScene* scene, std::ostream& logStream);
+void WalkTextures(FbxScene* scene, std::ostream& logStream);
+
 void ProcessSkeletonNode(FbxScene* fbxScene, FbxNode* node);
 void WalkAnimations(FbxNode* node, FbxScene* fbxScene, std::ostream& logStream);
 void WalkAnimation(FbxNode* node, FbxAnimStack* animStack, std::ostream& logStream);

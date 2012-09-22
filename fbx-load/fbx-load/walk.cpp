@@ -1,5 +1,36 @@
 #include "walk.hpp"
 
+void WalkAssets(FbxScene* scene, std::ostream& logStream){
+	WalkTextures(scene, logStream);
+	WalkMaterials(scene, logStream);
+}
+
+void WalkMaterials(FbxScene* scene, std::ostream& logStream){
+	FbxArray< FbxSurfaceMaterial * > materials;
+	scene->FillMaterialArray(materials);
+	
+	logStream << "Materials:\n";
+
+	for (int i = 0; i < materials.Size(); i++)
+		logStream << materials[i]->GetName() << "\n";
+
+	logStream << std::endl;
+}
+
+void WalkTextures(FbxScene* scene, std::ostream& logStream){
+	FbxArray< FbxTexture * > textures;
+	scene->FillTextureArray(textures);
+	
+	logStream << "Textures:\n";
+
+	// it seems like texture name == file name?  cant find another way to  figure this out
+	for (int i = 0; i < textures.Size(); i++){
+		logStream << textures[i]->GetName() << '('<<textures[i]->GetTextureType() <<")\n";
+	}
+
+	logStream << std::endl;
+}
+
 void WalkScene(FbxScene* fbxScene, std::ostream& logStream){
 	logStream << "Scene Graph: Name(Type)\n";
 	WalkNode(fbxScene, fbxScene->GetRootNode(), 0, logStream);
