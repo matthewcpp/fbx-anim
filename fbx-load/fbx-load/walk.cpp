@@ -52,7 +52,7 @@ void WalkNode(FbxScene* fbxScene, FbxNode* node, size_t depth, std::ostream& log
 
 void ProcessSkeletonNode(FbxScene* fbxScene, FbxNode* node){
 	FbxSkeleton* bone = FbxCast<FbxSkeleton>(node->GetNodeAttribute());
-	std::string logname = LogNameForObject(bone);
+	std::string logname = LogNameForObject(node);
 	std::ofstream log(logname.c_str());
 
 	FbxDouble3 pos = node->LclTranslation;
