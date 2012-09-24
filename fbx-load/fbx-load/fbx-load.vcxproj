@@ -77,20 +77,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\src\math\rAlignedBox3.cpp" />
+    <ClCompile Include="..\..\src\math\rMathUtil.cpp" />
+    <ClCompile Include="..\..\src\math\rQuaternion.cpp" />
+    <ClCompile Include="..\..\src\math\rVector2.cpp" />
+    <ClCompile Include="..\..\src\math\rVector3.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="math\rAlignedBox3.cpp" />
-    <ClCompile Include="math\rMathUtil.cpp" />
-    <ClCompile Include="math\rQuaternion.cpp" />
-    <ClCompile Include="math\rVector2.cpp" />
-    <ClCompile Include="math\rVector3.cpp" />
     <ClCompile Include="walk.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="math\rAlignedBox3.hpp" />
-    <ClInclude Include="math\rMathUtil.hpp" />
-    <ClInclude Include="math\rQuaternion.hpp" />
-    <ClInclude Include="math\rVector2.hpp" />
-    <ClInclude Include="math\rVector3.hpp" />
+    <ClInclude Include="..\..\src\math\rAlignedBox3.hpp" />
+    <ClInclude Include="..\..\src\math\rMathUtil.hpp" />
+    <ClInclude Include="..\..\src\math\rQuaternion.hpp" />
+    <ClInclude Include="..\..\src\math\rVector2.hpp" />
+    <ClInclude Include="..\..\src\math\rVector3.hpp" />
     <ClInclude Include="walk.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
