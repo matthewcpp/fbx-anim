@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="recondite">
+      <UniqueIdentifier>{a3f1462a-700d-42bf-a16c-e6ae2bf0421b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="recondite\include">
+      <UniqueIdentifier>{fe238165-cf8a-48db-b9a2-c174658c4bf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="recondite\src">
+      <UniqueIdentifier>{b4bd590c-9097-427c-998d-dddcf2608b92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="recondite\src\math">
+      <UniqueIdentifier>{f5d3027f-6acb-426b-8b9e-db51bd172e73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="recondite\src\geometry">
+      <UniqueIdentifier>{1ed49b13-6ad7-4e20-8ed1-c24e55a1b4c7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="recondite\src\core">
+      <UniqueIdentifier>{53d1c641-8164-42f8-96a6-282e899f622c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="recondite\src\asset">
+      <UniqueIdentifier>{29d9873c-a5a5-4f8c-9d1c-013d2b659b26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="recondite\src\common">
+      <UniqueIdentifier>{91e3aa4d-750e-46c5-9eec-1a2c5ea086f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="recondite\platform">
+      <UniqueIdentifier>{f3713f5c-20ea-4fb9-a215-cf9d8564fc6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="recondite\platform\rgl">
+      <UniqueIdentifier>{8312e7fe-47cd-4844-bd0c-ec644b8d2c74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="recondite\platform\rwx">
+      <UniqueIdentifier>{16b848ef-24ec-4417-912a-98dbe76b7909}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\recondite\include\rActor3.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rAlignedBox3.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rAsset.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rCamera.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rCircle2.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rColor.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rCone3.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rContentManager.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rDefs.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\recondite.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rEngine.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rFrustrum.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rGameTime.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rGeometry3.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rGraphicsDevice.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rIntersection2.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rIntersection3.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rLine2.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rLine3.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rMaterial.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rMathUtil.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rMatrix3.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rMatrix4.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rPlane3.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rPoint2.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rQuaternion.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rRectangle2.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rSize2.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rSphere3.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rTexture2D.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rTriangle2.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rTypes.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rVector2.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rVector3.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rViewport.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\platform\rwx\rwxContentManager.hpp">
+      <Filter>recondite\platform\rwx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\platform\rwx\rwxEngine.hpp">
+      <Filter>recondite\platform\rwx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\platform\rwx\rwxUtils.hpp">
+      <Filter>recondite\platform\rwx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\platform\rgl\rOpenGLGraphicsDevice.hpp">
+      <Filter>recondite\platform\rgl</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\platform\rwx\rwxGlView.hpp">
+      <Filter>recondite\platform\rwx</Filter>
+    </ClInclude>
+    <ClInclude Include="fbxViewApp.hpp" />
+    <ClInclude Include="fbxViewMainFrame.hpp" />
+    <ClInclude Include="rwxModelView.hpp" />
+    <ClInclude Include="rwxModelPreview.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\recondite\src\math\rMathUtil.cpp">
+      <Filter>recondite\src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\math\rMatrix3.cpp">
+      <Filter>recondite\src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\math\rMatrix4.cpp">
+      <Filter>recondite\src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\math\rQuaternion.cpp">
+      <Filter>recondite\src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\math\rVector2.cpp">
+      <Filter>recondite\src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\math\rVector3.cpp">
+      <Filter>recondite\src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rAlignedBox3.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rCircle2.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rCone3.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rGeometry3.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rIntersection2.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rIntersection3.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rLine2.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rLine3.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rPlane3.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rRectangle2.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rSphere3.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\geometry\rTriangle2.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\core\rActor3.cpp">
+      <Filter>recondite\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\core\rCamera.cpp">
+      <Filter>recondite\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\core\rGameTime.cpp">
+      <Filter>recondite\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\core\rGraphicsDevice.cpp">
+      <Filter>recondite\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\core\rViewport.cpp">
+      <Filter>recondite\src\core</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\asset\rAsset.cpp">
+      <Filter>recondite\src\asset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\asset\rTexture2D.cpp">
+      <Filter>recondite\src\asset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\common\rColor.cpp">
+      <Filter>recondite\src\common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\platform\rwx\rwxContentManager.cpp">
+      <Filter>recondite\platform\rwx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\platform\rwx\rwxEngine.cpp">
+      <Filter>recondite\platform\rwx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\platform\rwx\rwxUtils.cpp">
+      <Filter>recondite\platform\rwx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\platform\rgl\rOpenGLGraphicsDevice.cpp">
+      <Filter>recondite\platform\rgl</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\asset\rMaterial.cpp">
+      <Filter>recondite\src\asset</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\platform\rwx\rwxGLView.cpp">
+      <Filter>recondite\platform\rwx</Filter>
+    </ClCompile>
+    <ClCompile Include="fbxViewApp.cpp" />
+    <ClCompile Include="fbxViewMainFrame.cpp" />
+    <ClCompile Include="rwxModelView.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rFrustrum.cpp">
+      <Filter>recondite\src\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="rwxModelPreview.cpp" />
+  </ItemGroup>
+</Project>

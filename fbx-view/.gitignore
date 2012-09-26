@@ -1,0 +1,6 @@
+*.sdf
+*.opensdf
+Debug/*
+ipch/*
+fbx-load/Debug/*
+fbx-load/*.dll

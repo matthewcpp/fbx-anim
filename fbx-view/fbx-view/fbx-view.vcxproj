@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{9393E496-71AB-41BB-8785-1930AA410069}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>fbxview</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;__WXMSW__;__WXDEBUG__;_RECONDITE_WX_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\glew\include;C:\development\recondite\platform;C:\development\recondite\include;C:\development\wxWidgets29\include\msvc;C:\development\wxWidgets29\lib\vc_lib;C:\development\wxWidgets29\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>wxbase29ud.lib;wxbase29ud_net.lib;wxbase29ud_xml.lib;wxexpatd.lib;wxjpegd.lib;wxmsw29ud_adv.lib;wxmsw29ud_aui.lib;wxmsw29ud_core.lib;wxmsw29ud_gl.lib;wxmsw29ud_html.lib;wxmsw29ud_media.lib;wxmsw29ud_propgrid.lib;wxmsw29ud_qa.lib;wxmsw29ud_ribbon.lib;wxmsw29ud_richtext.lib;wxmsw29ud_stc.lib;wxmsw29ud_webview.lib;wxmsw29ud_xrc.lib;wxpngd.lib;wxregexud.lib;wxscintillad.lib;wxtiffd.lib;wxzlibd.lib;comctl32.lib;rpcrt4.lib;winmm.lib;advapi32.lib;wsock32.lib;glew32.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\development\glew\lib;C:\development\wxWidgets29\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\recondite\include\rActor3.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rAlignedBox3.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rAsset.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rCamera.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rCircle2.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rColor.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rCone3.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rContentManager.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rDefs.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\recondite.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rEngine.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rFrustrum.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rGameTime.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rGeometry3.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rGraphicsDevice.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rIntersection2.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rIntersection3.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rLine2.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rLine3.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rMaterial.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rMathUtil.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rMatrix3.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rMatrix4.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rPlane3.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rPoint2.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rQuaternion.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rRectangle2.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rSize2.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rSphere3.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rTexture2D.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rTriangle2.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rTypes.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rVector2.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rVector3.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rViewport.hpp" />
+    <ClInclude Include="..\..\..\recondite\platform\rgl\rOpenGLGraphicsDevice.hpp" />
+    <ClInclude Include="..\..\..\recondite\platform\rwx\rwxContentManager.hpp" />
+    <ClInclude Include="..\..\..\recondite\platform\rwx\rwxEngine.hpp" />
+    <ClInclude Include="..\..\..\recondite\platform\rwx\rwxGlView.hpp" />
+    <ClInclude Include="..\..\..\recondite\platform\rwx\rwxUtils.hpp" />
+    <ClInclude Include="fbxViewApp.hpp" />
+    <ClInclude Include="fbxViewMainFrame.hpp" />
+    <ClInclude Include="rwxModelPreview.hpp" />
+    <ClInclude Include="rwxModelView.hpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\recondite\platform\rgl\rOpenGLGraphicsDevice.cpp" />
+    <ClCompile Include="..\..\..\recondite\platform\rwx\rwxContentManager.cpp" />
+    <ClCompile Include="..\..\..\recondite\platform\rwx\rwxEngine.cpp" />
+    <ClCompile Include="..\..\..\recondite\platform\rwx\rwxGLView.cpp" />
+    <ClCompile Include="..\..\..\recondite\platform\rwx\rwxUtils.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\asset\rAsset.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\asset\rMaterial.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\asset\rTexture2D.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\common\rColor.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\core\rActor3.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\core\rCamera.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\core\rGameTime.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\core\rGraphicsDevice.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\core\rViewport.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rAlignedBox3.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rCircle2.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rCone3.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rFrustrum.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rGeometry3.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rIntersection2.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rIntersection3.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rLine2.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rLine3.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rPlane3.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rRectangle2.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rSphere3.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\geometry\rTriangle2.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\math\rMathUtil.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\math\rMatrix3.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\math\rMatrix4.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\math\rQuaternion.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\math\rVector2.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\math\rVector3.cpp" />
+    <ClCompile Include="fbxViewApp.cpp" />
+    <ClCompile Include="fbxViewMainFrame.cpp" />
+    <ClCompile Include="rwxModelPreview.cpp" />
+    <ClCompile Include="rwxModelView.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
