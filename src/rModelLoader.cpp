@@ -27,6 +27,8 @@ void rModelLoader::SetLogPath(const wxString& logPath){
 }
 
 bool rModelLoader::Load(const rString& path, rModel* model){
+	model->Clear();
+
 	fbxManager = FbxManager::Create();
 	fbxScene = FbxScene::Create(fbxManager , "fbx scene");
 

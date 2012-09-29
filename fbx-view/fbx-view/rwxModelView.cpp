@@ -8,6 +8,7 @@ rwxModelView::rwxModelView(rEngine* engine, wxWindow* parent, wxWindowID id)
 	:rwxGLView(engine, parent, id)
 {
 	m_model = NULL;
+	m_selectedBone = NULL;
 }
 
 void rwxModelView::OnPaint(wxPaintEvent& event){
@@ -59,13 +60,18 @@ void rwxModelView::DrawSkeletonBones(rBoneList& bones){
 }
 
 void rwxModelView::DrawSkeletonPositions(rBoneList& bones){
-	rVertex3Array positions;
+	rVertex3Array bonePositions, selectedBonePositions;
 
 	size_t numBones = bones.size();
-	for (size_t i = 0; i < numBones; i++)
-		positions.push_back(bones[i]->m_initialPosition);
+	for (size_t i = 0; i < numBones; i++){
+		if (bones[i] == m_selectedBone)
+			selectedBonePositions.push_back(bones[i]->m_initialPosition);
+		else
+			bonePositions.push_back(bones[i]->m_initialPosition);
+	}
 
-	m_engine->GraphicsDevice()->DrawPoints3(positions, *wxGREEN);
+	m_engine->GraphicsDevice()->DrawPoints3(bonePositions, *wxGREEN);
+	m_engine->GraphicsDevice()->DrawPoints3(selectedBonePositions, *wxYELLOW);
 }
 
 void rwxModelView::CalculateCameraDefaultPosition(const rAlignedBox3& box){
@@ -85,5 +91,10 @@ void rwxModelView::SetModel(rModel* model){
 		m_camera->SetPosition(rVector3::ZeroVector);
 	}
 
+	Refresh();
+}
+
+void rwxModelView::SetSelectedBone(rBone* bone){
+	m_selectedBone = bone;
 	Refresh();
 }

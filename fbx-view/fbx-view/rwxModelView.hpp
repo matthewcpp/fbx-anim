@@ -19,6 +19,7 @@ public:
 	void CalculateCameraDefaultPosition(const rAlignedBox3& box);
 
 	void SetModel(rModel* model);
+	void SetSelectedBone(rBone* bone);
 
 private:
 
@@ -29,8 +30,17 @@ private:
 
 private:
 	rModel* m_model;
+	rBone* m_selectedBone;
 
 	DECLARE_EVENT_TABLE()
+};
+
+class rwxBoneClientData : public wxClientData{
+public:
+	rwxBoneClientData(rBone* bone) : m_bone(bone){}
+	rBone* GetBone() const {return m_bone;}
+private:
+	rBone* m_bone;
 };
 
 #endif
