@@ -2,5 +2,5 @@
 *.opensdf
 Debug/*
 ipch/*
-fbx-load/Debug/*
-fbx-load/*.dll
+fbx-view/Debug/*
+fbx-view/*.dll

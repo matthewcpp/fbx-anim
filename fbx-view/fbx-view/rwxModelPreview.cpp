@@ -15,3 +15,9 @@ void rwxModelPreview::InitModelPreview(){
 	mainSizer->Add(m_view , 1 , wxEXPAND);
 	SetSizer(mainSizer);
 }
+
+void rwxModelPreview::SetModel(rModel* model){
+	model->CalculateBoundingBox();
+
+	m_view->SetModel(model);
+}

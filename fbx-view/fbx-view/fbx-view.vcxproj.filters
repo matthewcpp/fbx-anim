@@ -38,6 +38,12 @@
     <Filter Include="recondite\platform\rwx">
       <UniqueIdentifier>{16b848ef-24ec-4417-912a-98dbe76b7909}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ui">
+      <UniqueIdentifier>{962cfa2a-4845-45d6-bc77-a71b7bb2217c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="animation">
+      <UniqueIdentifier>{fd316f2f-c890-44c1-a715-65c5c75911c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\recondite\include\rActor3.hpp">
@@ -160,10 +166,33 @@
     <ClInclude Include="..\..\..\recondite\platform\rwx\rwxGlView.hpp">
       <Filter>recondite\platform\rwx</Filter>
     </ClInclude>
-    <ClInclude Include="fbxViewApp.hpp" />
-    <ClInclude Include="fbxViewMainFrame.hpp" />
-    <ClInclude Include="rwxModelView.hpp" />
-    <ClInclude Include="rwxModelPreview.hpp" />
+    <ClInclude Include="rwxModelView.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="fbxViewApp.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="fbxViewMainFrame.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="rwxModelPreview.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rBone.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rSkeleton.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="rKeyframe.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rModelLoader.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\rModel.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\recondite\src\math\rMathUtil.cpp">
@@ -262,12 +291,32 @@
     <ClCompile Include="..\..\..\recondite\platform\rwx\rwxGLView.cpp">
       <Filter>recondite\platform\rwx</Filter>
     </ClCompile>
-    <ClCompile Include="fbxViewApp.cpp" />
-    <ClCompile Include="fbxViewMainFrame.cpp" />
-    <ClCompile Include="rwxModelView.cpp" />
     <ClCompile Include="..\..\..\recondite\src\geometry\rFrustrum.cpp">
       <Filter>recondite\src\geometry</Filter>
     </ClCompile>
-    <ClCompile Include="rwxModelPreview.cpp" />
+    <ClCompile Include="fbxViewApp.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="fbxViewMainFrame.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="rwxModelPreview.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="rwxModelView.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rBone.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rSkeleton.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rModelLoader.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rModel.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

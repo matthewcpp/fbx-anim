@@ -5,12 +5,15 @@
 #include "rEngine.hpp"
 
 #include "rwxModelView.hpp"
+#include "rModel.hpp"
 
 #include <wx/wx.h>
 
 class rwxModelPreview : public wxPanel {
 public:
 	rwxModelPreview(rEngine* engine, wxWindow* parent, wxWindowID id=wxID_ANY);
+
+	void SetModel(rModel* model);
 
 private:
 	void InitModelPreview();

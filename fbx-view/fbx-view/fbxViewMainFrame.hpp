@@ -5,6 +5,9 @@
 
 #include "rwxModelPreview.hpp"
 
+#include "rModel.hpp"
+#include "rModelLoader.hpp"
+
 #include <wx/wx.h>
 
 class fbxViewMainFrame : public wxFrame{
@@ -13,6 +16,9 @@ public:
 	~fbxViewMainFrame();
 private:
 	void OnFileExit(wxCommandEvent& event);
+	void OnFileOpen(wxCommandEvent& event);
+
+	void LoadFBX();
 
 private:
 	void InitFrame();
@@ -22,6 +28,8 @@ private:
 
 	rwxModelPreview* m_preview;
 	rwxEngine* m_engine;
+
+	rModel m_model;
 };
 
 #endif

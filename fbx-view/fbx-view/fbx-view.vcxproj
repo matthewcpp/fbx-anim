@@ -49,14 +49,14 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;__WXMSW__;__WXDEBUG__;_RECONDITE_WX_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\development\glew\include;C:\development\recondite\platform;C:\development\recondite\include;C:\development\wxWidgets29\include\msvc;C:\development\wxWidgets29\lib\vc_lib;C:\development\wxWidgets29\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;__WXMSW__;__WXDEBUG__;FBXSDK_NEW_API;_RECONDITE_WX_;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\development\Autodesk\FBX\FBX SDK\2013.2\include;C:\development\fbx-anim\src;C:\development\glew\include;C:\development\recondite\platform;C:\development\recondite\include;C:\development\wxWidgets29\include\msvc;C:\development\wxWidgets29\lib\vc_lib;C:\development\wxWidgets29\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>wxbase29ud.lib;wxbase29ud_net.lib;wxbase29ud_xml.lib;wxexpatd.lib;wxjpegd.lib;wxmsw29ud_adv.lib;wxmsw29ud_aui.lib;wxmsw29ud_core.lib;wxmsw29ud_gl.lib;wxmsw29ud_html.lib;wxmsw29ud_media.lib;wxmsw29ud_propgrid.lib;wxmsw29ud_qa.lib;wxmsw29ud_ribbon.lib;wxmsw29ud_richtext.lib;wxmsw29ud_stc.lib;wxmsw29ud_webview.lib;wxmsw29ud_xrc.lib;wxpngd.lib;wxregexud.lib;wxscintillad.lib;wxtiffd.lib;wxzlibd.lib;comctl32.lib;rpcrt4.lib;winmm.lib;advapi32.lib;wsock32.lib;glew32.lib;opengl32.lib;glu32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\development\glew\lib;C:\development\wxWidgets29\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>wxbase29ud.lib;wxbase29ud_net.lib;wxbase29ud_xml.lib;wxexpatd.lib;wxjpegd.lib;wxmsw29ud_adv.lib;wxmsw29ud_aui.lib;wxmsw29ud_core.lib;wxmsw29ud_gl.lib;wxmsw29ud_html.lib;wxmsw29ud_media.lib;wxmsw29ud_propgrid.lib;wxmsw29ud_qa.lib;wxmsw29ud_ribbon.lib;wxmsw29ud_richtext.lib;wxmsw29ud_stc.lib;wxmsw29ud_webview.lib;wxmsw29ud_xrc.lib;wxpngd.lib;wxregexud.lib;wxscintillad.lib;wxtiffd.lib;wxzlibd.lib;comctl32.lib;rpcrt4.lib;winmm.lib;advapi32.lib;wsock32.lib;glew32.lib;opengl32.lib;glu32.lib;fbxsdk-2013.2-mdd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\development\Autodesk\FBX\FBX SDK\2013.2\lib\vs2010\x86;C:\development\glew\lib;C:\development\wxWidgets29\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -117,8 +117,13 @@
     <ClInclude Include="..\..\..\recondite\platform\rwx\rwxEngine.hpp" />
     <ClInclude Include="..\..\..\recondite\platform\rwx\rwxGlView.hpp" />
     <ClInclude Include="..\..\..\recondite\platform\rwx\rwxUtils.hpp" />
+    <ClInclude Include="..\..\src\rBone.hpp" />
+    <ClInclude Include="..\..\src\rModel.hpp" />
+    <ClInclude Include="..\..\src\rModelLoader.hpp" />
+    <ClInclude Include="..\..\src\rSkeleton.hpp" />
     <ClInclude Include="fbxViewApp.hpp" />
     <ClInclude Include="fbxViewMainFrame.hpp" />
+    <ClInclude Include="rKeyframe.hpp" />
     <ClInclude Include="rwxModelPreview.hpp" />
     <ClInclude Include="rwxModelView.hpp" />
   </ItemGroup>
@@ -156,6 +161,10 @@
     <ClCompile Include="..\..\..\recondite\src\math\rQuaternion.cpp" />
     <ClCompile Include="..\..\..\recondite\src\math\rVector2.cpp" />
     <ClCompile Include="..\..\..\recondite\src\math\rVector3.cpp" />
+    <ClCompile Include="..\..\src\rBone.cpp" />
+    <ClCompile Include="..\..\src\rModel.cpp" />
+    <ClCompile Include="..\..\src\rModelLoader.cpp" />
+    <ClCompile Include="..\..\src\rSkeleton.cpp" />
     <ClCompile Include="fbxViewApp.cpp" />
     <ClCompile Include="fbxViewMainFrame.cpp" />
     <ClCompile Include="rwxModelPreview.cpp" />
