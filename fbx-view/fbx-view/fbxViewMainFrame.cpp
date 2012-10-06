@@ -8,6 +8,10 @@ END_EVENT_TABLE()
 fbxViewMainFrame::fbxViewMainFrame(wxWindow *parent, wxWindowID id, const wxString &title, const wxPoint &pos, const wxSize &size)
 	:wxFrame(parent , id , title , pos , size)
 {
+	wxLogWindow* log = new wxLogWindow(this , "Log");
+	wxLog::SetActiveTarget(log);
+	log->GetFrame()->SetPosition(wxPoint(0,0));
+
 	m_engine = new rwxEngine();
 	InitFrame();
 }

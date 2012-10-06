@@ -1,8 +1,8 @@
 #include "rModelLoader.hpp"
 
 rModelLoader::rModelLoader(){
-	fbxScene = NULL;
-	fbxManager = NULL;
+	m_fbxScene = NULL;
+	m_fbxManager = NULL;
 }
 
 rModelLoader::~rModelLoader(){
@@ -11,14 +11,17 @@ rModelLoader::~rModelLoader(){
 
 void rModelLoader::Clear(){
 	m_logPath = wxEmptyString;
+	
+	//this is temporary untill we factor out fbx sdk reliance
+	return;
 
-	if (fbxScene){ 
-		fbxScene->Destroy();
-		fbxScene = NULL;
+	if (m_fbxScene){ 
+		m_fbxScene->Destroy();
+		m_fbxScene = NULL;
 	}
-	if (fbxManager){
-		fbxManager->Destroy();
-		fbxManager = NULL;
+	if (m_fbxManager){
+		m_fbxManager->Destroy();
+		m_fbxManager = NULL;
 	}
 }
 
@@ -29,12 +32,15 @@ void rModelLoader::SetLogPath(const wxString& logPath){
 bool rModelLoader::Load(const rString& path, rModel* model){
 	model->Clear();
 
-	fbxManager = FbxManager::Create();
-	fbxScene = FbxScene::Create(fbxManager , "fbx scene");
+	m_fbxManager = FbxManager::Create();
+	m_fbxScene = FbxScene::Create(m_fbxManager , "fbx scene");
 
-	FbxImporter* fbxImporter = FbxImporter::Create(fbxManager, "fbx importer");
+	model->fbxManager = m_fbxManager;
+	model->fbxScene = m_fbxScene;
+
+	FbxImporter* fbxImporter = FbxImporter::Create(m_fbxManager, "fbx importer");
 	bool result = fbxImporter->Initialize(path.c_str());
-	result = fbxImporter->Import(fbxScene);
+	result = fbxImporter->Import(m_fbxScene);
 
 	if (result){
 		WalkScene(model);
@@ -46,7 +52,7 @@ bool rModelLoader::Load(const rString& path, rModel* model){
 }
 
 void rModelLoader::WalkScene(rModel* model){
-	WalkNode(fbxScene->GetRootNode(), model);
+	WalkNode(m_fbxScene->GetRootNode(), model);
 }
 
 void rModelLoader::WalkNode(FbxNode* node, rModel* model){
@@ -62,32 +68,57 @@ void rModelLoader::WalkNode(FbxNode* node, rModel* model){
 	}
 }
 
+void rModelLoader::LoadBoneAnimations(FbxNode* node, rSkeleton* skeleton, rBone* bone){
+	int stackCount = m_fbxScene->GetSrcObjectCount(FBX_TYPE(FbxAnimStack));
+
+	for (int i = 0; i < stackCount; i++){
+		FbxAnimStack* animStack = FbxCast<FbxAnimStack>(m_fbxScene->GetSrcObject(FBX_TYPE(FbxAnimStack), i));
+		LoadAnimationforBone(node, skeleton, bone, animStack);
+	}
+}
+
+void rModelLoader::LoadAnimationforBone(FbxNode* node, rSkeleton* skeleton, rBone* bone, FbxAnimStack* animStack){
+	rString animName = animStack->GetName();
+	rAnimation* animation = skeleton->GetAnimation(animName);
+
+	if (!animation){
+		animation = skeleton->CreateAnimation(animName);
+		animation->animStack = animStack;
+	}
+
+	//we will need to create a keyframe set for this bone and animation here
+	animation->AddFbxNode(node);
+}
+
 void rModelLoader::ProcessSkeletonRoot(FbxNode* node, rModel* model){
 	rSkeleton* skeleton = model->CreateSkeleton(node->GetName());
 	rBone* root = skeleton->CreateRoot(node->GetName());
+	LoadBoneAnimations(node , skeleton, root);
 
 	LogSkeleton(node);
 
 	int childCount = node->GetChildCount();
 	for (int i = 0; i < childCount; i++){
-		ProcessSkeletonNode(node->GetChild(i), model, root);
+		ProcessSkeletonNode(node->GetChild(i), skeleton, root);
 	}
 }
 
-void rModelLoader::ProcessSkeletonNode(FbxNode* node, rModel* model, rBone* parentBone){
+void rModelLoader::ProcessSkeletonNode(FbxNode* node, rSkeleton* skeleton, rBone* parentBone){
 	FbxSkeleton* bone = FbxCast<FbxSkeleton>(node->GetNodeAttribute());
 	
 	rBone* childBone = parentBone->AddChild(node->GetName());
+	LoadBoneAnimations(node , skeleton, childBone);
 
 	LogSkeleton(node);
 
 	FbxAMatrix m = GetGlobalDefaultPosition(node);
 	FbxVector4 pos = m.GetT();
 	childBone->m_initialPosition = rVector3(pos[0], pos[1], pos[2]);
+	childBone->m_currentPosition = childBone->m_initialPosition;
 
 	int childCount = node->GetChildCount();
 	for (int i = 0; i < childCount; i++){
-		ProcessSkeletonNode(node->GetChild(i), model, childBone);
+		ProcessSkeletonNode(node->GetChild(i), skeleton, childBone);
 	}
 }
 

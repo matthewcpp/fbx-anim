@@ -24,7 +24,9 @@ private:
 	void WalkNode(FbxNode* node, rModel* model);
 	
 	void ProcessSkeletonRoot(FbxNode* node, rModel* model);
-	void ProcessSkeletonNode(FbxNode* node, rModel* model, rBone* parentBone);
+	void ProcessSkeletonNode(FbxNode* node, rSkeleton* skeleton, rBone* parentBone);
+	void LoadBoneAnimations(FbxNode* node, rSkeleton* skeleton, rBone* bone);
+	void LoadAnimationforBone(FbxNode* node, rSkeleton* skeleton, rBone* bone, FbxAnimStack* animStack);
 	void LogSkeleton(FbxNode* node);
 
 	bool NodeAttributeIsType(FbxNode* node, FbxNodeAttribute::EType type);
@@ -36,8 +38,8 @@ private:
 
 private:
 
-	FbxManager* fbxManager;
-	FbxScene* fbxScene;
+	FbxManager* m_fbxManager;
+	FbxScene* m_fbxScene;
 
 	wxString m_logPath;
 };

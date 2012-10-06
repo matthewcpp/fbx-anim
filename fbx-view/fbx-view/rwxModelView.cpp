@@ -51,8 +51,8 @@ void rwxModelView::DrawSkeletonBones(rBoneList& bones){
 		b = bones[i];
 		
 		for (size_t c = 0; c < b->NumChildren(); c++){
-			positions.push_back(b->m_initialPosition);
-			positions.push_back(b->GetChild(c)->m_initialPosition);
+			positions.push_back(b->m_currentPosition);
+			positions.push_back(b->GetChild(c)->m_currentPosition);
 		}
 	}
 
@@ -65,13 +65,13 @@ void rwxModelView::DrawSkeletonPositions(rBoneList& bones){
 	size_t numBones = bones.size();
 	for (size_t i = 0; i < numBones; i++){
 		if (bones[i] == m_selectedBone)
-			selectedBonePositions.push_back(bones[i]->m_initialPosition);
+			selectedBonePositions.push_back(bones[i]->m_currentPosition);
 		else
-			bonePositions.push_back(bones[i]->m_initialPosition);
+			bonePositions.push_back(bones[i]->m_currentPosition);
 	}
 
 	m_engine->GraphicsDevice()->DrawPoints3(bonePositions, *wxGREEN);
-	m_engine->GraphicsDevice()->DrawPoints3(selectedBonePositions, *wxYELLOW);
+	m_engine->GraphicsDevice()->DrawPoints3(selectedBonePositions, wxColor(0,0,255));
 }
 
 void rwxModelView::CalculateCameraDefaultPosition(const rAlignedBox3& box){

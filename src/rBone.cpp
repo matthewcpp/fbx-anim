@@ -1,8 +1,11 @@
 #include "rBone.hpp"
 
-rBone::rBone(const rString& name){
+rBone::rBone(const rString& name, rBone* parent){
 	m_name = name;
+	m_parent = parent;
+
 	m_initialPosition = rVector3::ZeroVector;
+	m_currentPosition = rVector3::ZeroVector;
 }
 
 rBone::~rBone(){
@@ -15,10 +18,22 @@ void rBone::DeleteChildren(){
 }
 
 rBone* rBone::AddChild(const rString& name){
-	rBone* child = new rBone(name);
+	rBone* child = new rBone(name, this);
 	m_children.push_back(child);
 
 	return child;
+}
+
+bool rBone::DeleteChild(const rString& name){
+	for (size_t i = 0; i < m_children.size(); i++){
+		if (m_children[i]->Name() == name){
+			delete m_children[i];
+			m_children.erase(m_children.begin() + i);
+			return true;
+		}
+	}
+
+	return false;
 }
 
 rBone* rBone::FindChild(const rString& name){
@@ -53,4 +68,21 @@ rBone* rBone::GetChild(size_t i) const{
 
 rString rBone::Name() const{
 	return m_name;
+}
+
+void rBone::Update(float animationTime, rAnimation* animation, const rMatrix4& parentMatrix){
+	rMatrix4 localTransform , globalTransform;
+	animation->Evaluate(m_name,animationTime , localTransform);
+	globalTransform = localTransform * parentMatrix;
+
+	//need to xform geometry
+	m_currentPosition = globalTransform.GetTranslate();
+
+	size_t numChildren = m_children.size();
+	for (size_t i = 0; i < numChildren; i++)
+		m_children[i]->Update(animationTime, animation, globalTransform);
+}
+
+rBone* rBone::Parent() const{
+	return m_parent;
 }

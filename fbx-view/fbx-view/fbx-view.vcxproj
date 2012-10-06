@@ -97,6 +97,7 @@
     <ClInclude Include="..\..\..\recondite\include\rLine2.hpp" />
     <ClInclude Include="..\..\..\recondite\include\rLine3.hpp" />
     <ClInclude Include="..\..\..\recondite\include\rMaterial.hpp" />
+    <ClInclude Include="..\..\..\recondite\include\rMath.hpp" />
     <ClInclude Include="..\..\..\recondite\include\rMathUtil.hpp" />
     <ClInclude Include="..\..\..\recondite\include\rMatrix3.hpp" />
     <ClInclude Include="..\..\..\recondite\include\rMatrix4.hpp" />
@@ -117,6 +118,7 @@
     <ClInclude Include="..\..\..\recondite\platform\rwx\rwxEngine.hpp" />
     <ClInclude Include="..\..\..\recondite\platform\rwx\rwxGlView.hpp" />
     <ClInclude Include="..\..\..\recondite\platform\rwx\rwxUtils.hpp" />
+    <ClInclude Include="..\..\src\rAnimation.hpp" />
     <ClInclude Include="..\..\src\rBone.hpp" />
     <ClInclude Include="..\..\src\rModel.hpp" />
     <ClInclude Include="..\..\src\rModelLoader.hpp" />
@@ -124,6 +126,7 @@
     <ClInclude Include="fbxViewApp.hpp" />
     <ClInclude Include="fbxViewMainFrame.hpp" />
     <ClInclude Include="rKeyframe.hpp" />
+    <ClInclude Include="rwxModelAnimationPanel.hpp" />
     <ClInclude Include="rwxModelPreview.hpp" />
     <ClInclude Include="rwxModelView.hpp" />
   </ItemGroup>
@@ -155,18 +158,21 @@
     <ClCompile Include="..\..\..\recondite\src\geometry\rRectangle2.cpp" />
     <ClCompile Include="..\..\..\recondite\src\geometry\rSphere3.cpp" />
     <ClCompile Include="..\..\..\recondite\src\geometry\rTriangle2.cpp" />
+    <ClCompile Include="..\..\..\recondite\src\math\rMath.cpp" />
     <ClCompile Include="..\..\..\recondite\src\math\rMathUtil.cpp" />
     <ClCompile Include="..\..\..\recondite\src\math\rMatrix3.cpp" />
     <ClCompile Include="..\..\..\recondite\src\math\rMatrix4.cpp" />
     <ClCompile Include="..\..\..\recondite\src\math\rQuaternion.cpp" />
     <ClCompile Include="..\..\..\recondite\src\math\rVector2.cpp" />
     <ClCompile Include="..\..\..\recondite\src\math\rVector3.cpp" />
+    <ClCompile Include="..\..\src\rAnimation.cpp" />
     <ClCompile Include="..\..\src\rBone.cpp" />
     <ClCompile Include="..\..\src\rModel.cpp" />
     <ClCompile Include="..\..\src\rModelLoader.cpp" />
     <ClCompile Include="..\..\src\rSkeleton.cpp" />
     <ClCompile Include="fbxViewApp.cpp" />
     <ClCompile Include="fbxViewMainFrame.cpp" />
+    <ClCompile Include="rwxModelAnimationPanel.cpp" />
     <ClCompile Include="rwxModelPreview.cpp" />
     <ClCompile Include="rwxModelView.cpp" />
   </ItemGroup>

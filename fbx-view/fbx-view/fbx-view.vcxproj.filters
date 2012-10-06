@@ -193,6 +193,15 @@
     <ClInclude Include="..\..\src\rModel.hpp">
       <Filter>animation</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\src\rAnimation.hpp">
+      <Filter>animation</Filter>
+    </ClInclude>
+    <ClInclude Include="rwxModelAnimationPanel.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\recondite\include\rMath.hpp">
+      <Filter>recondite\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\recondite\src\math\rMathUtil.cpp">
@@ -317,6 +326,15 @@
     </ClCompile>
     <ClCompile Include="..\..\src\rModel.cpp">
       <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\rAnimation.cpp">
+      <Filter>animation</Filter>
+    </ClCompile>
+    <ClCompile Include="rwxModelAnimationPanel.cpp">
+      <Filter>ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\recondite\src\math\rMath.cpp">
+      <Filter>recondite\src\math</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
