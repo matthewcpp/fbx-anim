@@ -27,7 +27,7 @@ rwxModelPreview::rwxModelPreview(rEngine* engine, wxWindow* parent, wxWindowID i
 void rwxModelPreview::InitModelPreview(){
 	wxSplitterWindow* m_splitter = new wxSplitterWindow(this, wxID_ANY);
 
-	m_skeletonTree = new wxDataViewTreeCtrl(m_splitter, rwxPREVIEW_SKELETON_TREE);
+	m_skeletonTree = new wxDataViewTreeCtrl(m_splitter, rwxPREVIEW_SKELETON_TREE, wxDefaultPosition, wxDefaultSize, wxDV_MULTIPLE);
 	m_skeletonTree->SetMinSize(wxSize(150, -1));
 	m_skeletonTree->Connect(wxEVT_CHAR, wxKeyEventHandler(rwxModelPreview::OnSkeletonTreeKeyEvent), 0,this);
 	
@@ -147,12 +147,20 @@ void rwxModelPreview::OnTick(wxTimerEvent& event){
 void rwxModelPreview::OnSkeletonTreeKeyEvent(wxKeyEvent& event){
 	int code = event.GetKeyCode();
 	if (code == WXK_DELETE || code == WXK_BACK){
-		wxDataViewItem selection = m_skeletonTree->GetSelection();
-		wxString boneName = m_skeletonTree->GetItemText(selection);
+		wxDataViewItemArray selections;
+		m_skeletonTree->GetSelections(selections);
+		for (size_t i =0; i < selections.size(); i++){
+			wxDataViewItem selection = selections[i];
 
-		m_skeletonTree->DeleteItem(selection);
-		m_model->GetSkeleton()->DeleteBone(boneName);
-		m_view->Refresh();
+			if (m_skeletonTree->IsContainer(selection))
+				continue;
+
+			wxString boneName = m_skeletonTree->GetItemText(selection);
+
+			m_skeletonTree->DeleteItem(selection);
+			m_model->GetSkeleton()->DeleteBone(boneName);
+			m_view->Refresh();
+		}
 	}
 	event.Skip();
 }
