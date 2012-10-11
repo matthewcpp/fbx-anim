@@ -22,9 +22,11 @@ public:
 
 	rString Name() const;
 
+	static void FBXAMatrixToRMatrix(const FbxAMatrix& transform, rMatrix4& result);
+
 private:
-	void HarvestFbxAMatrixData(const FbxAMatrix& matrix, rVector3& translate, rQuaternion& rotate, rVector3& scale);
-	void FBXAMatrixToRMatrix(const FbxAMatrix& transform, rMatrix4& result);
+	static void HarvestFbxAMatrixData(const FbxAMatrix& matrix, rVector3& translate, rQuaternion& rotate, rVector3& scale);
+	
 private:
 	rString m_name;
 

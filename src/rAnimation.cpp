@@ -18,10 +18,14 @@ bool rAnimation::Evaluate(const rString& boneName, float time, rMatrix4& matrix)
 	if (it == m_keyframeSets.end())
 		return false;
 
+	if (time > 2.9f)
+		time = 2.9f;
+
 	FbxNode* node = it->second;
 	FbxTime animTime;
 	animTime.SetSecondDouble(time);
 	
+
 	FbxAMatrix transform = fbxEvaluator->GetNodeLocalTransform(node, animTime);
 	FBXAMatrixToRMatrix(transform, matrix);
 

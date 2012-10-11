@@ -16,6 +16,9 @@ public:
 	void DrawScene();
 
 	void OnPaint(wxPaintEvent& event);
+	void OnChar(wxKeyEvent& event);
+	void OnMouseDown(wxMouseEvent& event);
+	void OnMouseMotion(wxMouseEvent& event);
 	void CalculateCameraDefaultPosition(const rAlignedBox3& box);
 
 	void SetModel(rModel* model);
@@ -31,6 +34,8 @@ private:
 private:
 	rModel* m_model;
 	rBone* m_selectedBone;
+
+	wxPoint m_prevPoint;
 
 	DECLARE_EVENT_TABLE()
 };

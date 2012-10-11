@@ -2,6 +2,9 @@
 
 BEGIN_EVENT_TABLE(rwxModelView , rwxGLView)
 	EVT_PAINT(rwxModelView::OnPaint)
+	EVT_CHAR(rwxModelView::OnChar)
+	EVT_LEFT_DOWN(rwxModelView::OnMouseDown)
+	EVT_MOTION(rwxModelView::OnMouseMotion)
 END_EVENT_TABLE()
 
 rwxModelView::rwxModelView(rEngine* engine, wxWindow* parent, wxWindowID id)
@@ -97,4 +100,53 @@ void rwxModelView::SetModel(rModel* model){
 void rwxModelView::SetSelectedBone(rBone* bone){
 	m_selectedBone = bone;
 	Refresh();
+}
+
+void rwxModelView::OnChar(wxKeyEvent& event){
+	int keycode = event.GetKeyCode();
+	bool refresh = false;
+
+	switch (keycode){
+	case WXK_UP:
+	case 'w':
+		m_camera->MoveForward(2.0f);
+		refresh = true;
+		break;
+	case WXK_DOWN:
+	case 's':
+		m_camera->MoveBackward(2.0f);
+		refresh = true;
+		break;
+	case WXK_LEFT:
+	case 'a':
+		m_camera->MoveLeft(2.0f);
+		refresh = true;
+		break;
+	case WXK_RIGHT:
+	case 'd':
+		m_camera->MoveRight(2.0f);
+		refresh = true;
+		break;
+	};
+
+	if (refresh)
+		Refresh();
+}
+
+void rwxModelView::OnMouseDown(wxMouseEvent& event){
+	m_prevPoint = event.GetPosition();
+	SetFocus();
+}
+
+void rwxModelView::OnMouseMotion(wxMouseEvent& event){
+	wxPoint currentPos = event.GetPosition();
+
+	if (event.Dragging()){
+		wxPoint delta = currentPos - m_prevPoint;
+		float rot = delta.x > 0 ? -1.0f : 1.0f;
+		m_camera->IncrementRotation(rVector3(0.0f, rot, 0.0f));
+		Refresh();
+	}
+
+	m_prevPoint = currentPos;
 }

@@ -34,7 +34,7 @@ private:
 	void Indent(size_t depth, wxTextOutputStream& logStream);
 	wxString LogPathForObject(FbxObject* obj);
 
-	FbxAMatrix GetGlobalDefaultPosition(FbxNode* pNode);
+	FbxAMatrix GetBindTransform(FbxNode* pNode);
 
 private:
 

@@ -70,13 +70,13 @@ rString rBone::Name() const{
 	return m_name;
 }
 
-void rBone::Update(float animationTime, rAnimation* animation, const rMatrix4& parentMatrix){
+void rBone::Update(float animationTime, rAnimation* animation, const rMatrix4& parentTransform){
 	rMatrix4 localTransform , globalTransform;
 	animation->Evaluate(m_name,animationTime , localTransform);
-	globalTransform = localTransform * parentMatrix;
+	globalTransform = localTransform * parentTransform;
 
 	//need to xform geometry
-	m_currentPosition = globalTransform.GetTranslate();
+	m_currentPosition = globalTransform.GetTransformedVector3(rVector3::ZeroVector);
 
 	size_t numChildren = m_children.size();
 	for (size_t i = 0; i < numChildren; i++)

@@ -26,13 +26,14 @@ public:
 
 	rString m_name;
 	
+	rMatrix4 m_bindTransform;
 	rVector3 m_initialPosition;
 	rVector3 m_currentPosition;
 
 	size_t NumChildren() const;
 	rBone* GetChild(size_t i) const;
 
-	virtual void Update(float animationTime, rAnimation* animation, const rMatrix4& parentMatrix);
+	virtual void Update(float animationTime, rAnimation* animation, const rMatrix4& parentTransform);
 	
 private:
 	void DeleteChildren();

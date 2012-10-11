@@ -21,6 +21,7 @@ rwxModelPreview::rwxModelPreview(rEngine* engine, wxWindow* parent, wxWindowID i
 	m_isPlaying = false;
 
 	InitModelPreview();
+	m_view->SetFocus();
 }
 
 void rwxModelPreview::InitModelPreview(){

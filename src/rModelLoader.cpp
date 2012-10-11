@@ -111,10 +111,9 @@ void rModelLoader::ProcessSkeletonNode(FbxNode* node, rSkeleton* skeleton, rBone
 
 	LogSkeleton(node);
 
-	FbxAMatrix m = GetGlobalDefaultPosition(node);
-	FbxVector4 pos = m.GetT();
-	childBone->m_initialPosition = rVector3(pos[0], pos[1], pos[2]);
-	childBone->m_currentPosition = childBone->m_initialPosition;
+	FbxAMatrix bindTransform = GetBindTransform(node);
+	rAnimation::FBXAMatrixToRMatrix(bindTransform, childBone->m_bindTransform);  //convert fbx anim matrix to r matrix
+	childBone->m_initialPosition = childBone->m_bindTransform.GetTranslate();
 
 	int childCount = node->GetChildCount();
 	for (int i = 0; i < childCount; i++){
@@ -168,23 +167,12 @@ void rModelLoader::LogSkeleton(FbxNode* node){
 		log << "null\n";
 }
 
-FbxAMatrix rModelLoader::GetGlobalDefaultPosition(FbxNode* pNode)
-{
-    FbxAMatrix localPosition;
-    FbxAMatrix globalPosition;
-    FbxAMatrix parentGlobalPosition;
+FbxAMatrix rModelLoader::GetBindTransform(FbxNode* pNode){
+	FbxAMatrix localTransform;
 
-    localPosition.SetT(pNode->LclTranslation.Get());
-    localPosition.SetR(pNode->LclRotation.Get());
-    localPosition.SetS(pNode->LclScaling.Get());
+	localTransform.SetT(pNode->LclTranslation.Get());
+    localTransform.SetR(pNode->LclRotation.Get());
+    localTransform.SetS(pNode->LclScaling.Get());
 
-    if (pNode->GetParent()){
-        parentGlobalPosition = GetGlobalDefaultPosition(pNode->GetParent());
-        globalPosition = parentGlobalPosition * localPosition;
-    }
-    else{
-        globalPosition = localPosition;
-    }
-
-    return globalPosition;
+	return localTransform;
 }
