@@ -93,6 +93,7 @@ void rModelLoader::LoadAnimationforBone(FbxNode* node, rSkeleton* skeleton, rBon
 void rModelLoader::ProcessSkeletonRoot(FbxNode* node, rModel* model){
 	rSkeleton* skeleton = model->CreateSkeleton(node->GetName());
 	rBone* root = skeleton->CreateRoot(node->GetName());
+	root->fbxNode = node;
 	LoadBoneAnimations(node , skeleton, root);
 
 	LogSkeleton(node);
@@ -107,6 +108,7 @@ void rModelLoader::ProcessSkeletonNode(FbxNode* node, rSkeleton* skeleton, rBone
 	FbxSkeleton* bone = FbxCast<FbxSkeleton>(node->GetNodeAttribute());
 	
 	rBone* childBone = parentBone->AddChild(node->GetName());
+	childBone->fbxNode = node;
 	LoadBoneAnimations(node , skeleton, childBone);
 
 	LogSkeleton(node);

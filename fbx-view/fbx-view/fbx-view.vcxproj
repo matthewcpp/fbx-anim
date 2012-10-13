@@ -126,6 +126,7 @@
     <ClInclude Include="fbxViewApp.hpp" />
     <ClInclude Include="fbxViewMainFrame.hpp" />
     <ClInclude Include="rKeyframe.hpp" />
+    <ClInclude Include="rwxBoneInfo.hpp" />
     <ClInclude Include="rwxModelAnimationPanel.hpp" />
     <ClInclude Include="rwxModelPreview.hpp" />
     <ClInclude Include="rwxModelView.hpp" />
@@ -172,6 +173,7 @@
     <ClCompile Include="..\..\src\rSkeleton.cpp" />
     <ClCompile Include="fbxViewApp.cpp" />
     <ClCompile Include="fbxViewMainFrame.cpp" />
+    <ClCompile Include="rwxBoneInfo.cpp" />
     <ClCompile Include="rwxModelAnimationPanel.cpp" />
     <ClCompile Include="rwxModelPreview.cpp" />
     <ClCompile Include="rwxModelView.cpp" />

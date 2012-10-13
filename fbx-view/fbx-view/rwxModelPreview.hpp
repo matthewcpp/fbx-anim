@@ -8,6 +8,7 @@
 
 #include "rwxModelView.hpp"
 #include "rModel.hpp"
+#include "rwxBoneInfo.hpp"
 
 #include <wx/wx.h>
 #include <wx/dataview.h>
@@ -30,6 +31,7 @@ private:
 	void CreateSkeletonTreeNode(wxDataViewItem& parentItem, rBone* bone);
 
 	void OnSkeletonTreeBoneSelect(wxDataViewEvent& event);
+	void OnSkeletonTreeBoneActivated(wxDataViewEvent& event);
 
 	void OnAnimPlayButton(wxCommandEvent& event);
 	void OnAnimPauseButton(wxCommandEvent& event);
@@ -52,6 +54,7 @@ private:
 
 	bool m_isPlaying;
 	wxTimer m_timer;
+	rwxBoneInfo* m_boneInfo;
 
 	DECLARE_EVENT_TABLE()
 

@@ -2,6 +2,7 @@
 #define R_BONE_HPP
 
 #include <vector>
+#include <fbxsdk.h>
 
 #include "rTypes.hpp"
 #include "rVector3.hpp"
@@ -40,6 +41,9 @@ private:
 
 	rBoneList m_children;
 	rBone* m_parent;
+
+public: //temp while we are using fbx sdk
+	FbxNode* fbxNode;
 };
 
 #endif

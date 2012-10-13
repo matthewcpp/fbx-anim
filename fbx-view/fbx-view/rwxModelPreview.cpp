@@ -2,7 +2,8 @@
 
 BEGIN_EVENT_TABLE(rwxModelPreview, wxPanel)
 	EVT_DATAVIEW_SELECTION_CHANGED(rwxModelPreview::rwxPREVIEW_SKELETON_TREE , rwxModelPreview::OnSkeletonTreeBoneSelect)
-	
+	EVT_DATAVIEW_ITEM_ACTIVATED(rwxModelPreview::rwxPREVIEW_SKELETON_TREE , rwxModelPreview::OnSkeletonTreeBoneActivated)
+
 	EVT_BUTTON(rwxModelAnimationPanel::rwxANIM_PLAY_BUTTON, rwxModelPreview::OnAnimPlayButton)
 	EVT_BUTTON(rwxModelAnimationPanel::rwxANIM_PAUSE_BUTTON, rwxModelPreview::OnAnimPauseButton)
 	EVT_BUTTON(rwxModelAnimationPanel::rwxANIM_STOP_BUTTON, rwxModelPreview::OnAnimStopButton)
@@ -19,6 +20,8 @@ rwxModelPreview::rwxModelPreview(rEngine* engine, wxWindow* parent, wxWindowID i
 
 	m_timer.SetOwner(this, 1000);
 	m_isPlaying = false;
+
+	m_boneInfo = new rwxBoneInfo(wxTheApp->GetTopWindow(), wxID_ANY);
 
 	InitModelPreview();
 	m_view->SetFocus();
@@ -53,6 +56,7 @@ void rwxModelPreview::SetModel(rModel* model){
 	if (m_model)
 		m_model->CalculateBoundingBox();
 
+	m_boneInfo->ClearBoneAttrs();
 	BuildSkeletonTree(m_model);
 	m_view->SetModel(m_model);
 	m_animPanel->SetModel(m_model);
@@ -87,7 +91,10 @@ void rwxModelPreview::CreateSkeletonTreeNode(wxDataViewItem& parentItem, rBone* 
 }
 
 void rwxModelPreview::OnSkeletonTreeBoneSelect(wxDataViewEvent& event){
-	m_view->SetSelectedBone(m_boneMap[event.GetItem()]);
+	rBone* bone = m_boneMap[event.GetItem()];
+
+	m_view->SetSelectedBone(bone);
+	m_boneInfo->SetBone(bone);
 }
 
 void rwxModelPreview::OnAnimPlayButton(wxCommandEvent& event){
@@ -146,7 +153,9 @@ void rwxModelPreview::OnTick(wxTimerEvent& event){
 
 void rwxModelPreview::OnSkeletonTreeKeyEvent(wxKeyEvent& event){
 	int code = event.GetKeyCode();
+	
 	if (code == WXK_DELETE || code == WXK_BACK){
+		bool deleted = false;
 		wxDataViewItemArray selections;
 		m_skeletonTree->GetSelections(selections);
 		for (size_t i =0; i < selections.size(); i++){
@@ -157,10 +166,20 @@ void rwxModelPreview::OnSkeletonTreeKeyEvent(wxKeyEvent& event){
 
 			wxString boneName = m_skeletonTree->GetItemText(selection);
 
+			m_boneMap.erase(selection);
 			m_skeletonTree->DeleteItem(selection);
 			m_model->GetSkeleton()->DeleteBone(boneName);
+			deleted = true;
+		}
+
+		if (deleted){
 			m_view->Refresh();
+			m_boneInfo->ClearBoneAttrs();
 		}
 	}
 	event.Skip();
+}
+
+void rwxModelPreview::OnSkeletonTreeBoneActivated(wxDataViewEvent& event){
+	m_boneInfo->Show(true);
 }

@@ -202,6 +202,9 @@
     <ClInclude Include="..\..\..\recondite\include\rMath.hpp">
       <Filter>recondite\include</Filter>
     </ClInclude>
+    <ClInclude Include="rwxBoneInfo.hpp">
+      <Filter>ui</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\recondite\src\math\rMathUtil.cpp">
@@ -335,6 +338,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\recondite\src\math\rMath.cpp">
       <Filter>recondite\src\math</Filter>
+    </ClCompile>
+    <ClCompile Include="rwxBoneInfo.cpp">
+      <Filter>ui</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
