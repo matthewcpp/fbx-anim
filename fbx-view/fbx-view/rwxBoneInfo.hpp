@@ -28,6 +28,9 @@ private:
 	wxStaticText* m_boneType;
 	wxStaticText* m_limbLength;
 	wxStaticText* m_boneSize;
+	wxStaticText* m_initialBonePosition;
+	wxStaticText* m_currentBonePosition;
+	wxStaticText* m_currentBoneGlobalPosition;
 
 	DECLARE_EVENT_TABLE()
 };

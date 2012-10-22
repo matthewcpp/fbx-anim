@@ -26,6 +26,9 @@ void rwxBoneInfo::InitBoneInfo(){
 	m_boneType = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
 	m_limbLength = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
 	m_boneSize = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
+	m_initialBonePosition = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
+	m_currentBonePosition = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
+	m_currentBoneGlobalPosition = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
 
 	wxBoxSizer* panelSizer = new wxBoxSizer(wxVERTICAL);
 	m_infoPanel->SetSizer(panelSizer);
@@ -33,6 +36,9 @@ void rwxBoneInfo::InitBoneInfo(){
 	panelSizer->Add(AddBoneInfoRow("FBX Bone Type", m_boneType));
 	panelSizer->Add(AddBoneInfoRow("Limb Length", m_limbLength));
 	panelSizer->Add(AddBoneInfoRow("Bone Size", m_boneSize));
+	panelSizer->Add(AddBoneInfoRow("Initial Bone Position", m_initialBonePosition));
+	panelSizer->Add(AddBoneInfoRow("Current Bone Position", m_currentBonePosition));
+	panelSizer->Add(AddBoneInfoRow("Current Bone Global Position", m_currentBoneGlobalPosition));
 
 	wxBoxSizer * mainSizer = new wxBoxSizer(wxVERTICAL);
 	mainSizer->Add(m_infoPanel, 1 , wxEXPAND);
@@ -56,6 +62,11 @@ void rwxBoneInfo::SetBoneAttrs(){
 	m_boneType->SetLabelText(m_bone->fbxNode->GetTypeName());
 	m_limbLength->SetLabelText(wxString::Format("  Length: %f", fbxBone->LimbLength.Get()));
 	m_boneSize->SetLabelText(wxString::Format("  Size: %f", fbxBone->Size.Get()));
+	m_initialBonePosition->SetLabelText(wxString::Format("%f, %f, %f", m_bone->m_initialPosition.x, m_bone->m_initialPosition.y, m_bone->m_initialPosition.z));
+	m_currentBonePosition->SetLabelText(wxString::Format("%f, %f, %f", m_bone->m_currentPosition.x, m_bone->m_currentPosition.y, m_bone->m_currentPosition.z));
+	
+	rVector3 boneGlobalPosition = m_bone->GetGlobalPosition();
+	m_currentBoneGlobalPosition->SetLabelText(wxString::Format("%f, %f, %f", boneGlobalPosition.x, boneGlobalPosition.y, boneGlobalPosition.z));
 }
 
 void rwxBoneInfo::ClearBoneAttrs(){
@@ -63,4 +74,7 @@ void rwxBoneInfo::ClearBoneAttrs(){
 	m_boneType->SetLabelText(wxEmptyString);
 	m_limbLength->SetLabelText(wxEmptyString);
 	m_boneSize->SetLabelText(wxEmptyString);
+	m_initialBonePosition->SetLabelText(wxEmptyString);
+	m_currentBonePosition->SetLabelText(wxEmptyString);
+	m_currentBoneGlobalPosition->SetLabelText(wxEmptyString);
 }

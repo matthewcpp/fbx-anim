@@ -70,6 +70,16 @@ rString rBone::Name() const{
 	return m_name;
 }
 
+
+rVector3 rBone::GetGlobalPosition() {
+	if (Parent()) {
+		return Parent()->GetGlobalPosition() + m_currentPosition;
+	}
+	else {
+		return m_currentPosition;
+	}
+}
+
 void rBone::Update(float animationTime, rAnimation* animation, const rMatrix4& parentTransform){
 	rMatrix4 localTransform , globalTransform;
 	animation->Evaluate(m_name,animationTime , localTransform);

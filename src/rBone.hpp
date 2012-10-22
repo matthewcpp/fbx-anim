@@ -34,6 +34,7 @@ public:
 	size_t NumChildren() const;
 	rBone* GetChild(size_t i) const;
 
+	rVector3 GetGlobalPosition();
 	virtual void Update(float animationTime, rAnimation* animation, const rMatrix4& parentTransform);
 	
 private:

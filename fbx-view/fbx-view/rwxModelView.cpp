@@ -54,8 +54,8 @@ void rwxModelView::DrawSkeletonBones(rBoneList& bones){
 		b = bones[i];
 		
 		for (size_t c = 0; c < b->NumChildren(); c++){
-			positions.push_back(b->m_currentPosition);
-			positions.push_back(b->GetChild(c)->m_currentPosition);
+			positions.push_back(b->GetGlobalPosition());
+			positions.push_back(b->GetChild(c)->GetGlobalPosition());
 		}
 	}
 
@@ -68,9 +68,9 @@ void rwxModelView::DrawSkeletonPositions(rBoneList& bones){
 	size_t numBones = bones.size();
 	for (size_t i = 0; i < numBones; i++){
 		if (bones[i] == m_selectedBone)
-			selectedBonePositions.push_back(bones[i]->m_currentPosition);
+			selectedBonePositions.push_back(bones[i]->GetGlobalPosition());
 		else
-			bonePositions.push_back(bones[i]->m_currentPosition);
+			bonePositions.push_back(bones[i]->GetGlobalPosition());
 	}
 
 	m_engine->GraphicsDevice()->DrawPoints3(bonePositions, *wxGREEN);

@@ -116,6 +116,7 @@ void rModelLoader::ProcessSkeletonNode(FbxNode* node, rSkeleton* skeleton, rBone
 	FbxAMatrix bindTransform = GetBindTransform(node);
 	rAnimation::FBXAMatrixToRMatrix(bindTransform, childBone->m_bindTransform);  //convert fbx anim matrix to r matrix
 	childBone->m_initialPosition = childBone->m_bindTransform.GetTranslate();
+	childBone->m_currentPosition = childBone->m_bindTransform.GetTranslate();
 
 	int childCount = node->GetChildCount();
 	for (int i = 0; i < childCount; i++){
