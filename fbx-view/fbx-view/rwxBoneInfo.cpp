@@ -30,26 +30,24 @@ void rwxBoneInfo::InitBoneInfo(){
 	m_currentBonePosition = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
 	m_currentBoneGlobalPosition = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
 
-	wxBoxSizer* panelSizer = new wxBoxSizer(wxVERTICAL);
-	m_infoPanel->SetSizer(panelSizer);
-	panelSizer->Add(AddBoneInfoRow("Name", m_boneName));
-	panelSizer->Add(AddBoneInfoRow("FBX Bone Type", m_boneType));
-	panelSizer->Add(AddBoneInfoRow("Limb Length", m_limbLength));
-	panelSizer->Add(AddBoneInfoRow("Bone Size", m_boneSize));
-	panelSizer->Add(AddBoneInfoRow("Initial Bone Position", m_initialBonePosition));
-	panelSizer->Add(AddBoneInfoRow("Current Bone Position", m_currentBonePosition));
-	panelSizer->Add(AddBoneInfoRow("Current Bone Global Position", m_currentBoneGlobalPosition));
+	m_gridSizer = new wxFlexGridSizer(2);
+	m_infoPanel->SetSizer(m_gridSizer);
+	AddBoneInfoRow("Name", m_boneName);
+	AddBoneInfoRow("FBX Bone Type", m_boneType);
+	AddBoneInfoRow("Limb Length", m_limbLength);
+	AddBoneInfoRow("Bone Size", m_boneSize);
+	AddBoneInfoRow("Initial Bone Position", m_initialBonePosition);
+	AddBoneInfoRow("Current Bone Position", m_currentBonePosition);
+	AddBoneInfoRow("Current Bone Global Position", m_currentBoneGlobalPosition);
 
 	wxBoxSizer * mainSizer = new wxBoxSizer(wxVERTICAL);
 	mainSizer->Add(m_infoPanel, 1 , wxEXPAND);
 	SetSizer(mainSizer);
 }
 
-wxBoxSizer* rwxBoneInfo::AddBoneInfoRow(const wxString& label , wxStaticText* staticText){
-	wxBoxSizer* sizer = new wxBoxSizer(wxHORIZONTAL);
-	sizer->Add(new wxStaticText(m_infoPanel, wxID_ANY, label + ":"), 0 , wxRIGHT, 5);
-	sizer->Add(staticText);
-	return sizer;
+void rwxBoneInfo::AddBoneInfoRow(const wxString& label , wxStaticText* staticText){
+	m_gridSizer->Add(new wxStaticText(m_infoPanel, wxID_ANY, label + ":"), 0 , wxRIGHT, 5);
+	m_gridSizer->Add(staticText);
 }
 
 void rwxBoneInfo::SetBoneAttrs(){

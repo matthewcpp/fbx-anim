@@ -18,7 +18,7 @@ private:
 	void SetBoneAttrs();
 	
 
-	wxBoxSizer* AddBoneInfoRow(const wxString& label , wxStaticText* staticText);
+	void AddBoneInfoRow(const wxString& label , wxStaticText* staticText);
 
 private:
 	rBone* m_bone;
@@ -31,6 +31,8 @@ private:
 	wxStaticText* m_initialBonePosition;
 	wxStaticText* m_currentBonePosition;
 	wxStaticText* m_currentBoneGlobalPosition;
+
+	wxFlexGridSizer* m_gridSizer;
 
 	DECLARE_EVENT_TABLE()
 };
