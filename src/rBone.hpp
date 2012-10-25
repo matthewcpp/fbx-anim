@@ -31,6 +31,9 @@ public:
 	rVector3 m_initialPosition;
 	rVector3 m_currentPosition;
 
+	rVector3 m_fbxGlobalDefaultPosition;
+	rVector3 m_fbxGlobalDefaultRotation;
+
 	size_t NumChildren() const;
 	rBone* GetChild(size_t i) const;
 

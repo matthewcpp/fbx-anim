@@ -93,9 +93,11 @@ void rModelLoader::LoadAnimationforBone(FbxNode* node, rSkeleton* skeleton, rBon
 void rModelLoader::ProcessSkeletonRoot(FbxNode* node, rModel* model){
 	rSkeleton* skeleton = model->CreateSkeleton(node->GetName());
 	rBone* root = skeleton->CreateRoot(node->GetName());
-	root->fbxNode = node;
-	LoadBoneAnimations(node , skeleton, root);
 
+	root->fbxNode = node;
+	GetFBXGlobalPosition(node, root->m_fbxGlobalDefaultPosition, root->m_fbxGlobalDefaultRotation);
+	
+	LoadBoneAnimations(node , skeleton, root);
 	LogSkeleton(node);
 
 	int childCount = node->GetChildCount();
@@ -108,9 +110,11 @@ void rModelLoader::ProcessSkeletonNode(FbxNode* node, rSkeleton* skeleton, rBone
 	FbxSkeleton* bone = FbxCast<FbxSkeleton>(node->GetNodeAttribute());
 	
 	rBone* childBone = parentBone->AddChild(node->GetName());
-	childBone->fbxNode = node;
-	LoadBoneAnimations(node , skeleton, childBone);
 
+	childBone->fbxNode = node;
+	GetFBXGlobalPosition(node, childBone->m_fbxGlobalDefaultPosition, childBone->m_fbxGlobalDefaultRotation);
+	
+	LoadBoneAnimations(node , skeleton, childBone);
 	LogSkeleton(node);
 
 	FbxAMatrix bindTransform = GetBindTransform(node);
@@ -178,4 +182,39 @@ FbxAMatrix rModelLoader::GetBindTransform(FbxNode* pNode){
     localTransform.SetS(pNode->LclScaling.Get());
 
 	return localTransform;
+}
+
+void rModelLoader::GetFBXGlobalPosition(FbxNode* node, rVector3& translate, rVector3& rotate){
+	FbxAMatrix m = GetGlobalDefaultPosition(node);
+	
+	FbxVector4 val = m.GetT();
+	translate = rVector3(val[0], val[1], val[2]);
+
+	val = m.GetR();
+	rotate = rVector3(val[0], val[1], val[2]);
+}
+
+// Recursive function to get a node's global default position.
+// As a prerequisite, parent node's default local position must be already set.
+FbxAMatrix rModelLoader::GetGlobalDefaultPosition(FbxNode* pNode)
+{
+    FbxAMatrix lLocalPosition;
+    FbxAMatrix lGlobalPosition;
+    FbxAMatrix lParentGlobalPosition;
+
+    lLocalPosition.SetT(pNode->LclTranslation.Get());
+    lLocalPosition.SetR(pNode->LclRotation.Get());
+    lLocalPosition.SetS(pNode->LclScaling.Get());
+
+    if (pNode->GetParent())
+    {
+        lParentGlobalPosition = GetGlobalDefaultPosition(pNode->GetParent());
+        lGlobalPosition = lParentGlobalPosition * lLocalPosition;
+    }
+    else
+    {
+        lGlobalPosition = lLocalPosition;
+    }
+
+    return lGlobalPosition;
 }

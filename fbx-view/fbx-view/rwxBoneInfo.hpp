@@ -31,6 +31,8 @@ private:
 	wxStaticText* m_initialBonePosition;
 	wxStaticText* m_currentBonePosition;
 	wxStaticText* m_currentBoneGlobalPosition;
+	wxStaticText* m_fbxBoneGlobalPosition;
+	wxStaticText* m_fbxBoneGlobalRotation;
 
 	wxFlexGridSizer* m_gridSizer;
 

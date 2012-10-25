@@ -29,6 +29,8 @@ void rwxBoneInfo::InitBoneInfo(){
 	m_initialBonePosition = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
 	m_currentBonePosition = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
 	m_currentBoneGlobalPosition = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
+	m_fbxBoneGlobalPosition = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
+	m_fbxBoneGlobalRotation = new wxStaticText(m_infoPanel, wxID_ANY, wxEmptyString);
 
 	m_gridSizer = new wxFlexGridSizer(2);
 	m_infoPanel->SetSizer(m_gridSizer);
@@ -39,6 +41,8 @@ void rwxBoneInfo::InitBoneInfo(){
 	AddBoneInfoRow("Initial Bone Position", m_initialBonePosition);
 	AddBoneInfoRow("Current Bone Position", m_currentBonePosition);
 	AddBoneInfoRow("Current Bone Global Position", m_currentBoneGlobalPosition);
+	AddBoneInfoRow("FBX Bone Node Global Position", m_fbxBoneGlobalPosition);
+	AddBoneInfoRow("FBX Bone Node Global Rotation", m_fbxBoneGlobalRotation);
 
 	wxBoxSizer * mainSizer = new wxBoxSizer(wxVERTICAL);
 	mainSizer->Add(m_infoPanel, 1 , wxEXPAND);
@@ -65,6 +69,10 @@ void rwxBoneInfo::SetBoneAttrs(){
 	
 	rVector3 boneGlobalPosition = m_bone->GetGlobalPosition();
 	m_currentBoneGlobalPosition->SetLabelText(wxString::Format("%f, %f, %f", boneGlobalPosition.x, boneGlobalPosition.y, boneGlobalPosition.z));
+	
+	m_fbxBoneGlobalPosition->SetLabelText(wxString::Format("%f, %f, %f", m_bone->m_fbxGlobalDefaultPosition.x, m_bone->m_fbxGlobalDefaultPosition.y, m_bone->m_fbxGlobalDefaultPosition.z));
+	m_fbxBoneGlobalRotation->SetLabelText(wxString::Format("%f, %f, %f", m_bone->m_fbxGlobalDefaultRotation.x, m_bone->m_fbxGlobalDefaultRotation.y, m_bone->m_fbxGlobalDefaultRotation.z));
+
 }
 
 void rwxBoneInfo::ClearBoneAttrs(){
@@ -75,4 +83,6 @@ void rwxBoneInfo::ClearBoneAttrs(){
 	m_initialBonePosition->SetLabelText(wxEmptyString);
 	m_currentBonePosition->SetLabelText(wxEmptyString);
 	m_currentBoneGlobalPosition->SetLabelText(wxEmptyString);
+	m_fbxBoneGlobalRotation->SetLabelText(wxEmptyString);
+	m_fbxBoneGlobalPosition->SetLabelText(wxEmptyString);
 }

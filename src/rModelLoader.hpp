@@ -36,6 +36,9 @@ private:
 
 	FbxAMatrix GetBindTransform(FbxNode* pNode);
 
+	void GetFBXGlobalPosition(FbxNode* node, rVector3& translate, rVector3& rotate);
+	FbxAMatrix GetGlobalDefaultPosition(FbxNode* pNode); //taken from FBX sample
+
 private:
 
 	FbxManager* m_fbxManager;
