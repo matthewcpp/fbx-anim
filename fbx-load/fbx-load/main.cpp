@@ -5,7 +5,8 @@
 
 int main (int argc, char** argv){
 
-	std::string path = "C:/development/fbx-anim/assets/turtle/turtle.fbx";
+	//std::string path = "C:/development/fbx-anim/assets/turtle/turtle.fbx";
+	std::string path = "C:/development/fbx-anim/assets/dude/dude.fbx";
 
 	FbxManager* fbxManager = FbxManager::Create();
 	FbxImporter* fbxImporter = FbxImporter::Create(fbxManager, "fbx importer");

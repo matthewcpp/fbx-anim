@@ -84,7 +84,7 @@ rAlignedBox3 rSkeleton::CalculateBoundingBox() const{
 	GetBones(bones);
 
 	for (size_t i = 0; i < bones.size(); i++)
-		boundingBox.AddPoint(bones[i]->m_initialPosition);
+		boundingBox.AddPoint(bones[i]->GetGlobalPosition());
 
 	return boundingBox;
 }

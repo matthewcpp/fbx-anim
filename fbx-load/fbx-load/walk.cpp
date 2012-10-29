@@ -33,7 +33,14 @@ void WalkTextures(FbxScene* scene, std::ostream& logStream){
 
 void WalkScene(FbxScene* fbxScene, std::ostream& logStream){
 	logStream << "Scene Graph: Name(Type)\n";
-	WalkNode(fbxScene, fbxScene->GetRootNode(), 0, logStream);
+	FbxNode* root = fbxScene->GetRootNode();
+
+	FbxAMatrix rootTransform;
+	FbxDouble3 t = root->LclTranslation.Get();
+    FbxDouble3 r =root->LclRotation.Get();
+    FbxDouble3 s =root->LclScaling.Get();
+
+	WalkNode(fbxScene, root, 0, logStream);
 	logStream << "\n\n" << std::endl;
 }
 
